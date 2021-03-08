@@ -31,5 +31,5 @@ resource "azurerm_storage_account" "example" {
 #cosmodb
 data "azurerm_cosmosdb_account" "example" {
   name                = "tfex-cosmosdb-account"
-  resource_group_name = "tfex-cosmosdb-account-rg"
+  resource_group_name = "${azurerm_resource_group.example.name}"
 }
