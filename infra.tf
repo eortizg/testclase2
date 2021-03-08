@@ -7,11 +7,6 @@ provider "azurerm" {
 resource "azurerm_resource_group" "example" {
   name     = "tfex-cosmosdb-account-rg"
   location = "East US"
-  tags = {
-    Ambiente = "${local.production}"
-    Area = "Test"
-    Empresa = "${local.company}"
-  }
 }
 
 resource "azurerm_storage_account" "example" {
@@ -20,12 +15,6 @@ resource "azurerm_storage_account" "example" {
   location                 = "${azurerm_resource_group.example.location}"
   account_tier             = "Standard"
   account_replication_type = "LRS"
-
-  tags = {
-    Ambiente = "${local.production}"
-    Area = "TEst"
-    Empresa = "${local.company}"
-  }
 }
 
 #cosmodb
