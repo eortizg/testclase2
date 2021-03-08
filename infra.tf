@@ -28,6 +28,10 @@ resource  "azurerm_cosmosdb_account" "example" {
     max_interval_in_seconds = 10
     max_staleness_prefix    = 200
   }
+  geo_location {
+    location          = azurerm_resource_group.rg.location
+    failover_priority = 0
+  }
 }
 
 resource "azurerm_cosmosdb_mongo_database" "example" {
