@@ -21,6 +21,7 @@ resource "azurerm_storage_account" "example" {
 resource  "azurerm_cosmosdb_account" "example" {
   name                = "tfex-cosmosdb-account"
   resource_group_name = "${azurerm_resource_group.rg.name}"
+  location = "East US"
 }
 
 resource "azurerm_cosmosdb_mongo_database" "example" {
