@@ -4,7 +4,7 @@ provider "azurerm" {
 }
 
 #Compliance Landing Zone For company, Production 
-resource "azurerm_resource_group" "tfex-cosmosdb-account-rg" {
+resource "azurerm_resource_group" "example" {
   name     = "tfex-cosmosdb-account-rg"
   location = "East US"
   tags = {
@@ -14,10 +14,10 @@ resource "azurerm_resource_group" "tfex-cosmosdb-account-rg" {
   }
 }
 
-resource "azurerm_storage_account" "stgprod" {
+resource "azurerm_storage_account" "example" {
   name                     = "stactestxx01"
-  resource_group_name      = "${azurerm_resource_group.tfex-cosmosdb-account-rg.name}"
-  location                 = "${azurerm_resource_group.tfex-cosmosdb-account-rg.location}"
+  resource_group_name      = "${azurerm_resource_group.example.name}"
+  location                 = "${azurerm_resource_group.example.location}"
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
@@ -31,7 +31,7 @@ resource "azurerm_storage_account" "stgprod" {
 #cosmodb
 data "azurerm_cosmosdb_account" "example" {
   name                = "tfex-cosmosdb-account"
-  resource_group_name = "tfex-cosmosdb-account-rg"
+  resource_group_name = data.azurerm_cosmosdb_account.example.resource_group_name
 }
 
 resource "azurerm_cosmosdb_mongo_database" "example" {
