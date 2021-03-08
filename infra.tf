@@ -22,6 +22,7 @@ resource  "azurerm_cosmosdb_account" "example" {
   name                = "tfex-cosmosdb-account"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   location = "East US"
+  offer_type          = "Standard"
 }
 
 resource "azurerm_cosmosdb_mongo_database" "example" {
@@ -35,7 +36,6 @@ resource "azurerm_cosmosdb_mongo_collection" "example" {
   resource_group_name = "${azurerm_resource_group.rg.name}"
   account_name        = "${azurerm_cosmosdb_account.example.name}"
   database_name       = "${azurerm_cosmosdb_mongo_database.example.name}"
-  offer_type          = "Standard"
   default_ttl_seconds = "777"
   shard_key           = "uniqueKey"
   throughput          = 400
