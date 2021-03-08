@@ -23,6 +23,11 @@ resource  "azurerm_cosmosdb_account" "example" {
   resource_group_name = "${azurerm_resource_group.rg.name}"
   location = "East US"
   offer_type          = "Standard"
+  consistency_policy {
+    consistency_level       = "BoundedStaleness"
+    max_interval_in_seconds = 10
+    max_staleness_prefix    = 200
+  }
 }
 
 resource "azurerm_cosmosdb_mongo_database" "example" {
