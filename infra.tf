@@ -30,20 +30,17 @@ resource "azurerm_storage_account" "stgprod" {
 
 #cosmodb
 data "azurerm_cosmosdb_account" "example" {
-  location = "East US"
   name                = "tfex-cosmosdb-account"
   resource_group_name = "tfex-cosmosdb-account-rg"
 }
 
 resource "azurerm_cosmosdb_mongo_database" "example" {
-  location = "East US"
   name                = "tfex-cosmos-mongo-db"
   resource_group_name = data.azurerm_cosmosdb_account.example.resource_group_name
   account_name        = data.azurerm_cosmosdb_account.example.name
 }
 
 resource "azurerm_cosmosdb_mongo_collection" "example" {
-  location = "East US"
   name                = "tfex-cosmos-mongo-db"
   resource_group_name = data.azurerm_cosmosdb_account.example.resource_group_name
   account_name        = data.azurerm_cosmosdb_account.example.name
