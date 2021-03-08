@@ -5,7 +5,7 @@ provider "azurerm" {
 
 #Compliance Landing Zone For company, Production 
 resource "azurerm_resource_group" "tfex-cosmosdb-account-rg" {
-  name     = "RGtestxx01"
+  name     = "tfex-cosmosdb-account-rg"
   location = "East US"
   tags = {
     Ambiente = "${local.production}"
