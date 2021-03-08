@@ -34,20 +34,5 @@ data "azurerm_cosmosdb_account" "example" {
   resource_group_name = data.azurerm_resource_group.example.name
 }
 
-resource "azurerm_cosmosdb_mongo_database" "example" {
-  name                = "tfex-cosmos-mongo-db"
-  resource_group_name = data.azurerm_resource_group.example.name
-  account_name        = data.azurerm_cosmosdb_account.example.name
-}
 
-resource "azurerm_cosmosdb_mongo_collection" "example" {
-  name                = "tfex-cosmos-mongo-db"
-  resource_group_name = data.azurerm_resource_group.example.name
-  account_name        = data.azurerm_cosmosdb_account.example.name
-  database_name       = data.azurerm_cosmosdb_mongo_database.example.name
-
-  default_ttl_seconds = "777"
-  shard_key           = "uniqueKey"
-  throughput          = 400
-}
 
